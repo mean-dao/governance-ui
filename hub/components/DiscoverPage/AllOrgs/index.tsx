@@ -6,6 +6,7 @@ import { RealmCircle } from '@hub/components/branding/RealmCircle';
 import { SmallCard } from '@hub/components/DiscoverPage/SmallCard';
 import { LoadingDots } from '@hub/components/LoadingDots';
 import { useQuery } from '@hub/hooks/useQuery';
+import { STEALTH_HUBS } from '@hub/lib/constants';
 import cx from '@hub/lib/cx';
 import { RealmCategory } from '@hub/types/RealmCategory';
 import * as RE from '@hub/types/Result';
@@ -64,6 +65,13 @@ export function AllOrgs(props: Props) {
             urlId: item.urlId,
           }))
           .filter((item) => {
+            if (STEALTH_HUBS.has(item.publicKey.toBase58())) {
+              return false;
+            }
+
+            return true;
+          })
+          .filter((item) => {
             if (!categoryFilter.length) {
               return true;
             }
@@ -111,9 +119,9 @@ export function AllOrgs(props: Props) {
                 all organizations building on solana
               </div>
             </div>
-            <div className="text-neutral-500">
+            {/* <div className="text-neutral-500">
               All the projects and organizations on Solana
-            </div>
+            </div> */}
             <div className="mt-3 grid grid-cols-4 gap-x-3">
               <div className="relative col-span-2 md:col-span-1">
                 <input

@@ -148,6 +148,11 @@ export default function useGovernanceAssets() {
       isVisible: canUseAnyInstruction,
     },
     {
+      id: Instructions.CancelStream,
+      name: 'Streamflow: Cancel Vesting Contract',
+      isVisible: canUseAnyInstruction,
+    },
+    {
       id: Instructions.Grant,
       name: 'Grant',
       isVisible:
@@ -471,6 +476,31 @@ export default function useGovernanceAssets() {
     {
       id: Instructions.WithrawFromCastle,
       name: 'Castle: Withdraw from Vault',
+      isVisible: canUseAnyInstruction,
+    },
+    {
+      id: Instructions.MeanCreateAccount,
+      name: 'Payment Stream: New account',
+      isVisible: canUseAnyInstruction,
+    },
+    {
+      id: Instructions.MeanFundAccount,
+      name: 'Payment Stream: Fund account',
+      isVisible: canUseAnyInstruction,
+    },
+    {
+      id: Instructions.MeanWithdrawFromAccount,
+      name: 'Payment Stream: Withdraw funds',
+      isVisible: canUseAnyInstruction,
+    },
+    {
+      id: Instructions.MeanCreateStream,
+      name: 'Payment Stream: New stream',
+      isVisible: canUseAnyInstruction,
+    },
+    {
+      id: Instructions.MeanTransferStream,
+      name: 'Payment Stream: Transfer stream',
       isVisible: canUseAnyInstruction,
     },
     {

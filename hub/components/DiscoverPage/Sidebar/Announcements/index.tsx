@@ -12,19 +12,19 @@ import { Post } from './Post';
 
 const CONFIG = [
   {
-    postId: '1h9',
+    postId: '2ay',
   },
   {
-    postId: '1h6',
+    postId: '2a7',
   },
   {
-    postId: '1ha',
+    postId: '2b0',
   },
   {
-    postId: '1hd',
+    postId: '2aq',
   },
   {
-    postId: '1h7',
+    postId: '2b6',
   },
 ];
 
@@ -71,31 +71,39 @@ export function Announcements(props: Props) {
                 />
               )),
             ({ feedItems }) =>
-              feedItems.map((item, i) => (
-                <div
-                  className={cx(
-                    'gap-x-3',
-                    'grid-cols-[22px,1fr]',
-                    'grid',
-                    'items-center',
-                    'px-2',
-                  )}
-                  key={item.id}
-                >
-                  <div
-                    className={cx(
-                      'font-medium',
-                      'text-center',
-                      'text-neutral-900',
-                      'text-xs',
-                      'w-full',
-                    )}
-                  >
-                    {(i + 1).toFixed(0).padStart(2, '0')}
-                  </div>
-                  <Post post={item} />
-                </div>
-              )),
+              CONFIG.map(({ postId }, i) => {
+                const post = feedItems.find((item) => item.id === postId);
+
+                if (post) {
+                  return (
+                    <div
+                      className={cx(
+                        'gap-x-3',
+                        'grid-cols-[22px,1fr]',
+                        'grid',
+                        'items-center',
+                        'px-2',
+                      )}
+                      key={post.id}
+                    >
+                      <div
+                        className={cx(
+                          'font-medium',
+                          'text-center',
+                          'text-neutral-900',
+                          'text-xs',
+                          'w-full',
+                        )}
+                      >
+                        {(i + 1).toFixed(0).padStart(2, '0')}
+                      </div>
+                      <Post post={post} />
+                    </div>
+                  );
+                }
+
+                return null;
+              }),
           ),
         )}
       </div>
